@@ -1,0 +1,51 @@
+<div class="body">
+    <div class="container" [ngClass]="{'active': isSignUp}">
+        <div class="form-container sign-up" *ngIf="isSignUp">
+            <form (submit)="onLogin()">
+                <h1>Sign In</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><ion-icon class="icon" name="logo-google"></ion-icon></a>
+                    <a href="#" class="icon"><ion-icon class="icon" name="logo-facebook"></ion-icon></a>
+                    <a href="#" class="icon"><ion-icon class="icon" name="logo-github"></ion-icon></a>
+                    <a href="#" class="icon"><ion-icon class="icon" name="logo-linkedin"></ion-icon></a>
+                </div>
+                <span>or use your email password</span>
+                <input type="email" placeholder="Email" [(ngModel)]="email" name="email" required>
+                <input type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
+                <a href="#">Forget Your Password?</a>
+                <button type="submit">Sign In</button>
+            </form>
+        </div>
+        <div class="form-container sign-in" *ngIf="!isSignUp">
+            <form (submit)="onRegister()">
+                <h1>Create Account</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><ion-icon class="icon" name="logo-google"></ion-icon></a>
+                    <a href="#" class="icon"><ion-icon class="icon" name="logo-facebook"></ion-icon></a>
+                    <a href="#" class="icon"><ion-icon class="icon" name="logo-github"></ion-icon></a>
+                    <a href="#" class="icon"><ion-icon class="icon" name="logo-linkedin"></ion-icon></a>
+                </div>
+                <span>or use your email for registeration</span>
+                <input type="text" placeholder="Name" [(ngModel)]="name" name="name" required>
+                <input type="email" placeholder="Email" [(ngModel)]="email" name="email" required>
+                <input type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
+                <input type="password" placeholder="Confirm Password" [(ngModel)]="confirmPassword" name="confirmPassword" required>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Welcome Back!</h1>
+                    <p>Enter your personal details to use all of site features</p>
+                    <button class="hidden" (click)="toggleSignIn()">Sign In</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Register with your personal details to use all of site features</p>
+                    <button class="hidden" (click)="toggleSignUp()">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

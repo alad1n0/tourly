@@ -1,0 +1,40 @@
+<section id="blogSection">
+    <div class="blog-title">
+        <p class="section-subtitle">Блог</p>
+        <h2 class="h2 section-title">Блог компанії</h2>
+    </div>
+    <div class="main">
+        <ul class="cards">
+            <li [routerLink]="['/blog', blog.id]" *ngFor="let blog of blogCards" class="cards_item">
+                <div class="card">
+                    <div class="card_image">
+                        <img [src]="blog.img"
+                            alt="mixed vegetable salad in a mason jar." />
+                    </div>
+                    <div class="card_content">
+                        <h2 class="card_title">{{blog.name}}</h2>
+                        <div class="card_text">
+                            <p>{{blog.description}}</p>
+                            <p>{{blog.description2}}</p>
+                            <hr />
+                            <p>{{blog.exposition}}</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section class="cta" id="contact">
+    <div class="container">
+        <div class="cta-content">
+            <p class="section-subtitle">Звернітся до нас</p>
+            <h2 class="h2 section-title">Готові до створення блогів?</h2>
+            <p class="section-text">
+                Підготуйтесь для нас найкращі моменти вашого життя з подорожей! Ми створемо блог із вашою участю.
+            </p>
+        </div>
+        <button routerLink="/contact" routerLinkActive="active" class="btn btn-secondary">Зв'яжіться з нами!</button>
+    </div>
+</section>

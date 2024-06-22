@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="profile-card">
+        <div class="profile-header">
+            <div class="main-profile">
+                <div class="profile-image">
+                    <img *ngIf="user.image" [src]="getImageUrl()" alt="Profile Image">
+                    <img *ngIf="!user.image" src="../../assets/author/author2.jpg" alt="Default Profile Image">
+                </div>
+                <div class="profile-names">
+                    <h1 class="username">{{ user?.name }}</h1>
+                    <small class="page-title">User TOURLY</small>
+                </div>
+                <div class="profile-links">
+                    <button (click)="showProfile = true; showSettings = false;" [class.active]="showProfile">Profile</button>
+                    <button (click)="showSettings = true; showProfile = false;" [class.active]="showSettings">Settings</button>
+                </div>
+            </div>
+      </div>
+  
+      <div class="profile-body" *ngIf="showProfile">
+            <h1>Profile Information</h1>
+            <div class="profile-info">
+                <p>{{ user?.description }}</p>
+                <ul class="list-group">
+                    <li><strong class="text-dark">Full Name:</strong> {{ user?.name }}</li>
+                    <li><strong class="text-dark">Mobile:</strong> {{ user?.phone }}</li>
+                    <li><strong class="text-dark">Email:</strong> {{ user?.email }}</li>
+                </ul>
+            </div>
+            <button class="btn-logut" (click)="logout()"><ion-icon name="log-out-outline"></ion-icon> Logout</button>
+      </div>
+  
+        <div class="profile-settings" *ngIf="showSettings">
+            <div class="form-group">
+                <div>
+                    <label>Name</label>
+                    <input type="text" placeholder="Name" [(ngModel)]="user.name">
+                </div>
+                <div>
+                    <label>Email</label>
+                    <input type="text" placeholder="Email" [(ngModel)]="user.email">
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <label>Phone</label>
+                    <input type="text" placeholder="Phone" [(ngModel)]="user.phone">
+                </div>
+                <div>
+                    <div>
+                        <label>Image Profile</label>
+                        <input id="file" class="form-control" id="customFile" type="file" (change)="onFileChange($event)">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <label>Description</label>
+                    <textarea placeholder="Write your message here..." [(ngModel)]="user.description"></textarea>
+                </div>
+            </div>
+            <button class="btn" (click)="updateProfile()">Save</button>
+        </div>
+    </div>
+</div>  

@@ -1,0 +1,31 @@
+<section *ngIf="blog" class="blog-detail" id="blog-detail-Section">
+    <div class="container">
+        <h2 class="h2 section-title">{{blog.name}}</h2>
+        <div class="main">
+            <p style="font-size: 24px;" class="section-text">
+                {{blog.description}}
+            </p>
+            <img width="500" height="315" [src]="blog.img" alt="">
+            <p style="font-size: 24px;" class="section-text">
+                {{blog.description2}}
+            </p>
+            <iframe width="500" height="315" src="https://www.youtube.com/embed/IBcwhaYP6Uk?si=3nVNcXhBCO4Q21Wx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <p style="font-size: 24px;" class="section-text">
+                {{blog.exposition}}
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="cta" id="contact">
+    <div class="container">
+        <div class="cta-content">
+            <p class="section-subtitle">Звернітся до нас</p>
+            <h2 class="h2 section-title">Готові до створення блогів?</h2>
+            <p class="section-text">
+                Підготуйтесь для нас найкращі моменти вашого життя з подорожей! Ми створемо блог із вашою участю.
+            </p>
+        </div>
+        <button routerLink="/contact" routerLinkActive="active" class="btn btn-secondary">Зв'яжіться з нами!</button>
+    </div>
+</section>

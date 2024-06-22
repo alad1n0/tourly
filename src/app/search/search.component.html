@@ -1,0 +1,99 @@
+<section class="tour-search">
+  <div class="container">
+    <form class="tour-search-form">
+      <div class="input-wrapper">
+        <label for="country" class="input-label">Виберіть країну</label>
+        <select name="country" id="country" [(ngModel)]="selectedCountry" (change)="onCountryChange()" required class="input-field">
+          <option value="" disabled selected>Оберіть країну</option>
+          <option *ngFor="let country of countryTours" [value]="country.name">{{ country.name }}</option>
+        </select>
+      </div>
+      <div class="input-wrapper" *ngIf="selectedCountry">
+        <label for="city" class="input-label">Виберіть місто</label>
+        <select name="city" id="city" [(ngModel)]="selectedCity" (change)="onCityChange()" required class="input-field">
+          <option value="" disabled selected>Оберіть місто</option>
+          <option *ngFor="let city of cities" [value]="city.name">{{ city.name }}</option>
+        </select>
+      </div>
+      <div class="input-wrapper" *ngIf="selectedCity">
+        <label for="hotel" class="input-label">Виберіть готель</label>
+        <select name="hotel" id="hotel" [(ngModel)]="selectedHotel" (change)="onHotelChange()" required class="input-field">
+          <option value="" disabled selected>Оберіть готель</option>
+          <option *ngFor="let hotel of hotels" [value]="hotel.name">{{ hotel.name }}</option>
+        </select>
+      </div>
+      <div class="input-wrapper" *ngIf="selectedHotel">
+        <label for="peoples" class="input-label">Кількість людей</label>
+        <select name="peoples" id="peoples" [(ngModel)]="selectedPeople" (change)="onPeopleChange()" required class="input-field">
+          <option value="" disabled selected>Оберіть кількість людей</option>
+          <option *ngFor="let people of peoples" [value]="people.peopletour">{{ people.peopletour }} людини</option>
+        </select>
+      </div>
+      <div class="input-wrapper" *ngIf="selectedPeople">
+        <label for="datefrom" class="input-label">Дата заїзду</label>
+        <select name="datefrom" id="datefrom" [(ngModel)]="selectedDateFrom" (change)="onDateToChange()" required class="input-field">
+            <option value="" disabled selected>Оберіть дату</option>
+            <option *ngFor="let datefrom of datefroms" [value]="datefrom.tourdatefrom">{{ datefrom.tourdatefrom }}</option>
+        </select>
+      </div>
+      <div class="input-wrapper" *ngIf="selectedDateFrom">
+        <label for="datetos" class="input-label">Дата виїзду</label>
+        <select name="datetos" id="datetos" [(ngModel)]="selectedDateTo" required class="input-field">
+          <option value="" disabled selected>Оберіть дату</option>
+          <option *ngFor="let dateto of datetos" [value]="dateto.tourdateto">{{ dateto.tourdateto }}</option>
+        </select>
+      </div>
+      <button type="button" class="btn btn-secondary" (click)="filterTours()">Фільтрувати</button>
+      <button type="button" class="btn btn-primary" (click)="resetFilter()">Скинути</button>
+    </form>
+  </div>
+</section>
+
+<section class="teams">
+  <div class="container">
+    <div class="container-teams">
+      <div *ngFor="let tours of toursCards" [routerLink]="['/tours', tours.id]" class="team-item" [style.background-image]="'url(data:image/jpeg;base64,' + tours.img + ')'">
+        <h3>{{tours.country}}</h3>
+        <p>{{tours.name}}</p>
+        <div class="icon-team">
+          <ion-icon *ngFor="let star of getStars(tours.rating)" name="star"></ion-icon>
+        </div>
+        <div class="circle"></div>
+        <div class="circle2">{{tours.price}}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <div class="input-wrapper" *ngIf="selectedCountry">
+    <label for="city" class="input-label">Виберіть місто</label>
+    <select name="city" id="city" [(ngModel)]="selectedCity" required class="input-field">
+        <option value="" disabled selected>Оберіть місто</option>
+        <option *ngFor="let city of getCountryCities()" [value]="city.name">{{ city.name }}</option>
+    </select>
+</div>
+<div class="input-wrapper" *ngIf="selectedCity">
+    <label for="hotel" class="input-label">Виберіть готель</label>
+    <select name="hotel" id="hotel" [(ngModel)]="selectedHotel" required class="input-field">
+        <option value="" disabled selected>Оберіть готель</option>
+        <option *ngFor="let hotel of getCitiesHotels()" [value]="hotel.name">{{ hotel.name }}</option>
+    </select>
+</div> -->
+<!-- <div class="input-wrapper" *ngIf="selectedHotel">
+                <label for="people" class="input-label">Кількість людей</label>
+                <select name="people" id="people" [(ngModel)]="selectedPeoples" required class="input-field">
+                    <option value="" disabled selected>Оберіть людей</option>
+                    <option *ngFor="let people of getPeoplesHotels()" [value]="people.peoples">{{ people.peoples }} дорослий</option>
+                </select>
+            </div>
+            <div class="input-wrapper" *ngIf="selectedPeoples">
+                <label for="startdate" class="input-label">Дата заїзду</label>
+                <select name="startdate" id="startdate" [(ngModel)]="selectedStartDate" required class="input-field">
+                    <option value="" disabled selected>Оберіть дату</option>
+                    <option *ngFor="let startdate of getStartDateHotels()" [value]="startdate.date">{{ startdate.date }}</option>
+                </select>
+            </div>
+            <div class="input-wrapper" *ngIf="selectedStartDate" [(ngModel)]="selectedEndDate">
+                <label for="enddate" class="input-label">Дата виписки</label>
+                <input type="date" id="date" min="2024-04-19" required class="input-field"> 
+            </div> -->

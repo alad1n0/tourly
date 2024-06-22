@@ -1,0 +1,247 @@
+.container {
+    padding-inline: 15px;
+}
+
+.tour-search {
+    background: var(--bright-navy-blue);
+    padding-block: var(--section-padding);
+}
+
+.tour-search-form .input-label {
+    width: 100%;
+    color: var(--white);
+    font-size: var(--fs-4);
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.tour-search-form .input-field {
+    background: var(--white);
+    padding: 5px 10px;
+    font-size: var(--fs-5);
+    border-radius: 50px;
+}
+
+.tour-search-form .input-field::placeholder {
+    color: var(--spanish-gray);
+}
+
+.tour-search-form .input-field::-webkit-datetime-edit {
+    color: var(--spanish-gray);
+    text-transform: uppercase;
+}
+
+.tour-search-form .input-wrapper {
+    margin-bottom: 15px;
+}
+
+.tour-search .btn {
+    width: 100%;
+    --border-width: 1px;
+    font-weight: var(--fw-600);
+    margin-top: 35px;
+}
+
+/* teams */
+.teams {
+    padding-block: var(--section-padding);
+}
+
+.container-teams {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.team-item {
+    width: 270px;
+    min-width: 270px;
+    height: 270px;
+    color: #fff;
+    position: relative;
+    border-radius: 20px;
+    display: flex;
+    background-size: cover;
+    background-position: center;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+.team-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.icon-team img {
+    width: 50px;
+    height: 50px;
+}
+
+.team-item:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+    background-color: #858f83;
+    color: #fff;
+}
+
+.team-item h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center;
+    position: relative;
+    left: 51%;
+    bottom: 10%;
+    transform: translateX(-50%);
+}
+
+.team-item p {
+    font-size: 20px;
+    text-align: center;
+    position: relative;
+    left: 3%;
+    padding: 0 40px;
+}
+
+.circle {
+    display: flex;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    position: absolute;
+    top: 15px;
+    left: -15px;
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+.team-item:nth-child(1) .circle {
+    background-color: yellow;
+}
+
+.team-item:nth-child(2) .circle {
+    background-color: red;
+}
+
+.team-item:nth-child(3) .circle {
+    background-color: aqua;
+}
+
+.team-item:nth-child(4) .circle {
+    background-color: rgb(101, 51, 148);
+}
+
+.team-item:nth-child(5) .circle {
+    background-color: rgb(126, 113, 139);
+}
+
+.team-item:nth-child(6) .circle {
+    background-color: rgb(131, 167, 32);
+}
+
+.team-item:nth-child(7) .circle {
+    background-color: rgb(13, 3, 24);
+}
+
+.team-item:nth-child(8) .circle {
+    background-color: rgb(172, 18, 120);
+}
+
+.circle2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    left: -20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+.icon-team {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px;
+}
+
+@media (min-width: 580px) {
+    .container {
+        max-width: 780px;
+        margin-inline: auto;
+    }
+
+    .card-text {
+        --fs-5: 15px;
+    }
+
+    .tour-search-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: flex-end;
+        gap: 10px;
+    }
+
+    .tour-search-form .input-wrapper {
+        margin-bottom: 0;
+    }
+
+    .tour-search-form .input-field {
+        padding: 16px 20px;
+    }
+
+    .tour-search .btn {
+        grid-column: span 2;
+        margin-top: 20px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 900px;
+    }
+
+    .section-text {
+        max-width: 60ch;
+        margin-inline: auto;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 1150px;
+    }
+
+    .tour-search-form {
+        display: grid;
+        padding-left: 20px;
+        grid-template-columns: repeat(8, 5fr);
+        justify-content: center;
+    }
+
+    .tour-search .btn {
+        --padding: 15px;
+        grid-column: unset;
+        margin-top: 0;
+    }
+}
+
+@media (min-width: 1300px) {
+    .container {
+        max-width: 1380px;
+    }
+
+}

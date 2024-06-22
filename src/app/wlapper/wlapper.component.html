@@ -1,0 +1,24 @@
+<p class="section-subtitle">Компанія TOURLY</p>
+<h2 class="h2 section-title">Блог Компанії</h2>
+<section class="articles">
+    <article *ngFor="let aboutblog of toursBlogCards">
+        <div class="article-wrapper">
+            <figure>
+                <img [src]="aboutblog.img" alt="" />
+            </figure>
+            <div class="article-body">
+                <h2>{{aboutblog.name}}</h2>
+                <p>
+                    {{aboutblog.description}}
+                </p>
+                <a routerLink="/blog" routerLinkActive="active" class="read-more">Дізнатися більше
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </div>            
+        </div>
+    </article>
+</section>

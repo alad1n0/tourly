@@ -1,0 +1,83 @@
+<footer class="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <img src="../../assets/logo.svg" alt="Tourly logo">
+        </a>
+        <p class="footer-text">
+          TOURLY - це компанія, яка спеціалізується на наданні відпочинкових послуг та організації подорожей до найпопулярніших туристичних напрямків по всьому світу.
+        </p>
+      </div>
+
+      <div class="footer-contact">
+        <h4 class="contact-title">Меню</h4>
+        <ul class="navbar-list">
+          <li>
+            <a href="" class="navbar-link" routerLink="/about" routerLinkActive="active" data-nav-link>ПРО НАС</a>
+          </li>
+          <li>
+            <a href="" class="navbar-link" routerLink="/tours" routerLinkActive="active" data-nav-link>ТУРИ</a>
+          </li>
+          <li>
+            <a href="" class="navbar-link" routerLink="/blog" routerLinkActive="active" data-nav-link>БЛОГ</a>
+          </li>
+          <li>
+            <a href="" class="navbar-link" routerLink="/gallery" routerLinkActive="active" data-nav-link>ГАЛЕРЕЯ</a>
+          </li>
+          <li>
+            <a href="" class="navbar-link" routerLink="/contact" routerLinkActive="active" data-nav-link>ЗВ'ЯЖІТЬСЯ З НАМИ</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4 class="contact-title">Зв'яжіться з нами</h4>
+        <p class="contact-text">
+          Не соромтеся зв’язуватися з нами!
+        </p>
+        <ul>
+          <li class="contact-item">
+            <ion-icon name="call-outline"></ion-icon>
+            <a class="contact-link">{{ footerAddress.phone }}</a>
+          </li>
+          <li class="contact-item">
+            <ion-icon name="mail-outline"></ion-icon>
+            <a class="contact-link">{{ footerAddress.email }}</a>
+          </li>
+          <li class="contact-item">
+            <ion-icon name="location-outline"></ion-icon>
+            <address class="contact-link">{{ footerAddress.address }}</address>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-form">
+        <p class="form-text">
+          Підпишіться на нашу розсилку, щоб отримати більше оновлень і новин!
+        </p>
+        <form action="" class="form-wrapper">
+          <input type="email" name="email" class="input-field" placeholder="Введіть електронну адресу" required>
+          <button type="submit" class="btn btn-secondary">Підпишіться</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <p class="copyright">
+        &copy; 2024 All rights reserved
+      </p>
+      <ul class="footer-bottom-list">
+        <li>
+          <a href="" class="footer-bottom-link">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="" class="footer-bottom-link">Term & Condition</a>
+        </li>
+        <li>
+          <a href="" class="footer-bottom-link">FAQ</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>

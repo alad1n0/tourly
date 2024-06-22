@@ -1,0 +1,53 @@
+<section class="package" id="toursSection">
+    <div class="container">
+        <p class="section-subtitle">ПОПУЛЯРНІ ТУРИ</p>
+        <h2 class="h2 section-title">Огляньте наші тури</h2>
+        <p class="section-text">
+            Наша компанія пропонує широкий вибір популярних турів, щоб задовольнити різні потреби та бажання наших клієнтів. Ми працюємо над створенням найкращих маршрутів та програм, які надихають та захоплюють наших подорожуючих.
+        </p>
+        <ul class="package-list">
+            <li *ngFor="let tour of tours; let i=index">
+                <div class="package-card" *ngIf="i < 3">
+                    <figure class="card-banner">
+                        <img [src]="'data:image/jpeg;base64,' + tour.img" loading="lazy">
+                    </figure>
+                    <div class="card-content">
+                        <h3 class="h3 card-title">{{tour.name}}</h3>
+                        <p class="card-text">{{tour.description}}</p>
+                        <ul class="card-meta-list">
+                            <li class="card-meta-item">
+                                <div class="meta-box">
+                                    <ion-icon name="time"></ion-icon>
+                                    <p class="text">{{tour.date}}</p>
+                                </div>
+                            </li>
+                            <li class="card-meta-item">
+                                <div class="meta-box">
+                                    <ion-icon name="people"></ion-icon>
+                                    <p class="text">{{tour.peoples}}</p>
+                                </div>
+                            </li>
+                            <li class="card-meta-item">
+                                <div class="meta-box">
+                                    <ion-icon name="location"></ion-icon>
+                                    <p class="text">{{tour.country}}</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-price">
+                        <div class="wrapper">
+                            <p class="reviews">{{tour.reviews}}</p>
+                            <div class="card-rating">
+                                <ion-icon *ngFor="let star of getStars(tour.rating)" name="star"></ion-icon>
+                            </div>
+                        </div>
+                        <p class="price">{{tour.price}} <span>/ на людину</span></p>
+                        <button [routerLink]="['/tours', tour.id]" class="btn btn-secondary">Забронюйте зараз</button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <button class="btn btn-primary" routerLink="/search" routerLinkActive="active">Переглянути більше турів</button>
+    </div>
+</section>

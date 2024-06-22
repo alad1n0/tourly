@@ -1,0 +1,284 @@
+<section *ngIf="tour" class="package">
+    <p class="section-subtitle">Про Тур</p>
+    <h2 class="h2 section-title">{{tour.name}}</h2>
+    <div class="container">
+        <ul class="package-list">
+            <li>
+                <div class="package-card">
+                    <figure class="card-banner">
+                        <img [src]="'data:image/jpeg;base64,' + tour.img" loading="lazy">
+                    </figure>
+                    <div class="card-content">
+                        <h3 class="h3 card-title">{{tour.name}}</h3>
+                        <p class="card-text">{{tour.description}}</p>
+                        <ul class="card-meta-list">
+                            <li class="card-meta-item">
+                                <div class="meta-box">
+                                    <ion-icon name="time"></ion-icon>
+                                    <p class="text">{{tour.date}}</p>
+                                </div>
+                            </li>
+                            <li class="card-meta-item">
+                                <div class="meta-box">
+                                    <ion-icon name="people"></ion-icon>
+                                    <p class="text">{{tour.peoples}}</p>
+                                </div>
+                            </li>
+                            <li class="card-meta-item">
+                                <div class="meta-box">
+                                    <ion-icon name="location"></ion-icon>
+                                    <p class="text">{{tour.country}}</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-price">
+                        <div class="wrapper">
+                            <p class="reviews">{{tour.reviews}}</p>
+                            <div class="card-rating">
+                                <ion-icon *ngFor="let star of getStars(tour.rating)" name="star"></ion-icon>
+                            </div>
+                        </div>
+                        <p class="price">{{ tour.price }} <span>/ на людину</span></p>
+                        <button (click)="addOrder()" class="btn btn-secondary">Забронювати</button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <p class="section-subtitle">Деталі</p>
+    <h2 class="h2 section-title">Деталі туру</h2>
+    <div class="container">
+        <div class="tour-details">
+            <table class="tour-table">
+                <tr>
+                    <th>Назва туру</th>
+                    <td>{{ tour.name }}</td>
+                </tr>
+                <tr>
+                    <th>Країна</th>
+                    <td>{{ tour.country }}</td>
+                </tr>
+                <tr>
+                    <th>Місто</th>
+                    <td>{{ tour.city }}</td>
+                </tr>
+                <tr>
+                    <th>Готель</th>
+                    <td>{{ tour.hotel }}</td>
+                </tr>
+                <tr>
+                    <th>Кількість людей</th>
+                    <td>{{ tour.peoples }}</td>
+                </tr>
+                <tr>
+                    <th>Дати заїзду</th>
+                    <td>{{ tour.date }}</td>
+                </tr>
+                <tr>
+                    <th>Ціна</th>
+                    <td>{{ tour.price }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <p class="section-subtitle">Відгуки</p>
+    <h2 class="h2 section-title">Відгуки до туру</h2>
+    <div class="container-card">
+        <main *ngFor="let review of reviews" class="card">
+            <section class="l-card__text">
+                <p>{{ review.review }}</p>
+            </section>
+            <section class="l-card__user">
+                <div class="l-card__userImage">
+                    <img [src]="'data:image/jpeg;base64,' + review.authorImg" alt="{{ review.author }}">
+                </div>
+                <div class="l-card__userInfo">
+                    <span>{{ review.author }}</span>
+                </div>
+            </section>
+        </main>
+        <main class="card">
+            <div class="new-review">
+                <div class="review-add">
+                    <div class="review">
+                        <img src="../../assets/images/plus.png">
+                        <h2>More</h2>
+                        <a (click)="toggleForm()">New Tourly Review</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</section>
+
+<section *ngIf="showForm" class="modal-overlay">
+    <section class="modal-container">
+        <h3 class="section-subtitle">TOURLY</h3>
+        <button class="close-btn btn btn-outline-secondary" (click)="toggleForm()">
+            <ion-icon name="close"></ion-icon>
+        </button>
+        <form (submit)="onAddReview()">
+            <div class="form-group">
+                <h4 class="section-subtitle" for="reviewText">Напишіть свій відгук тут</h4>
+                <textarea [(ngModel)]="reviewText" name="reviewText" id="reviewText" class="form-control" placeholder="Напишіть свій відгук тут" required></textarea>
+            </div>
+            <button type="submit" style="margin-left: 170px; margin-top: 20px;" class="btn btn-primary mt-3">Додати відгук</button>
+        </form>
+    </section>
+</section> 
+
+<div *ngIf="showPopup" class="order-popup">
+    <div class="order-popup__container">
+        <div class="order-popup__icon"></div>
+        <h1 class="order-popup__title">TOURLY</h1>
+        <p class="order-popup__subtitle">
+            Дякую, що залишили відгук!
+        </p>
+    </div>
+</div>
+
+<div *ngIf="showPopupOrder" class="order-popup">
+    <div class="order-popup__container">
+        <div class="order-popup__icon"></div>
+        <h1 class="order-popup__title">TOURLY Дякую за замовлення</h1>
+        <p class="order-popup__subtitle">
+            Наш менеджер зв'яжеться з вами найближчим часом!
+        </p>
+    </div>
+</div>
+
+<style>
+    .order-popup {
+        z-index: 1000;
+        position: fixed;
+        top: 10%;
+        left: 30.8%;
+        margin-top: 50px;
+        transition: all 0.35s ease-in;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .order-popup__container {
+        max-width: 735px;
+        width: 735px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        backdrop-filter: blur(45px);
+        border-radius: 15px;
+        border: 2px solid rgb(218, 218, 255);
+        box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.4);
+    }
+
+    .order-popup__icon {
+        margin: 115px 0 0;
+        background-image: url('../../assets/images/order-icon.svg');
+        width: 59px;
+        height: 59px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .order-popup__title {
+        margin: 24px 0 20px;
+        font-size: 40px;
+        font-weight: 500;
+        line-height: 48px;
+        color: rgb(134, 134, 243);
+    }
+
+    .order-popup__subtitle {
+        margin: 0 0 134px;
+        text-align: center;
+        font-size: 20px;
+        font-weight: 300;
+        line-height: 24px;
+        color: rgb(134, 134, 243);
+    }
+
+    @media screen and (max-width: 1400px) {
+        .order-popup__container {
+            max-width: 290px;
+        }
+
+        .order-popup__icon {
+            margin: 60px 0 0;
+        }
+    }
+
+    .modal-overlay {
+        position: fixed;
+        top: 30%;
+        left: 35%;
+        margin-top: 50px;
+        width: 600px;
+        z-index: 1000;
+        transition: all 0.35s ease-in;
+    }
+
+    .form-group textarea {
+        background: transparent;
+        border: 1px solid rgb(152, 152, 240);
+        border-radius: 10px;
+        color: rgb(134, 134, 243);
+        padding: .8em;
+        margin-top: 5px;
+        font-size: 16px;
+        width: 460px;
+    }
+
+    .form-group textarea:focus{
+        border: 2px solid rgb(167, 167, 253);
+    }
+
+    .form-group textarea:hover::before{
+        border: 2px solid rgb(52, 52, 122);
+    }
+
+    .section-subtitle {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .modal-container {
+        position: relative;
+        justify-content: center;
+        align-content: center;
+        backdrop-filter: blur(45px);
+        border-radius: 15px;
+        border: 2px solid rgb(218, 218, 255);
+        margin: 0 auto;
+        height: 250px;
+        margin-top: 5%;
+        text-align: center;
+        padding: 2rem;
+        box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.4);
+    }
+
+    .close-btn {
+        position: absolute;
+        background-color: transparent;
+        border-color: transparent;
+        color: rgb(134, 134, 243);
+        font-size: 20px;
+        top: 4%;
+        right: 0;
+        transition: all ease-in-out 0.3s;
+    }
+
+    @media (hover: hover) {
+        .close-btn:hover {
+            -ms-transform: rotate(90deg);
+            -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+            transition: all ease-in-out 0.3s;
+            cursor: pointer;
+        }
+    }
+</style>

@@ -1,0 +1,293 @@
+.container {
+    height: 100vh;
+    backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace;
+}
+
+.profile-card {
+    width: clamp(428px, 1000px, 1000px);
+    height: 680px;
+    background-color: hsl(206, 37%, 55%);
+    border-radius: 40px;
+    border: 3px solid whitesmoke;
+    display: grid;
+    grid-template-rows: 220px auto;
+    overflow: auto;
+    box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+.profile-card:hover {
+    box-shadow: none;
+}
+
+.profile-header {
+    background: url('../../assets/Rectangle.png') center;
+    background-size: cover;
+    margin: 10px;
+    border-radius: 30px;
+    position: relative;
+}
+
+.main-profile {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    inset: calc(100% - 75px) auto auto 70px;
+}
+
+.profile-image img {
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+    border-radius: 50%;
+    border: 10px solid hsl(206, 34%, 20%);
+}
+
+.profile-names {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+    background-color: hsl(206, 34%, 20%);
+    padding: 10px 30px;
+    border-radius: 0 50px 50px 0;
+    transform: translateX(-10px);
+}
+    
+.page-title {
+    color: rgb(196, 196, 243);
+}
+
+.profile-body {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    padding-top: 90px;
+    padding-left: 30px;
+}
+
+.profile-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: hsl(206, 34%, 20%);
+    margin-left: 250px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 280px;
+    height: 72px;
+    border-radius: 50px;
+}
+
+.profile-links button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: aliceblue;
+    padding: 0 26px;
+    font-size: 16px;
+    outline: none;
+}
+
+.profile-links button.active {
+    border-radius: 50px;
+    border: 2px solid rgb(172, 172, 253);
+    background-color: rgb(209, 209, 255);
+    transition: border-radius 0.3s ease, border 0.3s ease;
+}
+
+.profile-links button.active:last-child {
+    border-radius: 50px;
+    transition: border-radius 0.3s ease, border 0.3s ease;
+}
+
+input[type=text] {
+    font-size: 14px;
+	appearance: none;
+	border: 1px solid rgb(152, 152, 240);
+	outline: none;
+    border-radius: 10px;
+    width: 440px;
+	padding: .5em;
+	color: white;
+}
+
+input[type=text]:focus{
+    border: 2px solid rgb(167, 167, 253);
+}
+
+input[type=text]:hover::before {
+    border-color: rgb(167, 167, 253);
+}
+
+.form-group textarea {
+    background: transparent;
+    border: 1px solid rgb(152, 152, 240);
+    border-radius: 10px;
+    color: white;
+    padding: .5em;
+    font-size: 14px;
+    width: 910px;
+}
+
+.form-group textarea:focus{
+    border: 2px solid rgb(167, 167, 253);
+}
+
+.form-group textarea:hover::before{
+    border: 2px solid rgb(167, 167, 253);
+}
+
+.profile-settings {
+    padding: 80px 20px 80px 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-info {
+    padding-top: 30px;
+    font-size: 16px;
+    width: 940px;
+}
+
+.list-group{
+    padding: 20px;
+}
+
+.list-group li {
+    padding: 5px;
+}
+
+.btn {
+    display: inline-block;
+    vertical-align: top;
+    padding: 8px 30px;
+    border: 1px solid #80bdff;
+    background-color: transparent;
+    font-size: 14px;
+    color: #fff;
+    width: 150px;
+    margin-left: 81%;
+    margin-top: 30px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background .1s linear, color .1s linear;
+}
+
+.btn:hover {
+    border: 2px solid rgb(167, 167, 253);
+}
+
+.btn-logut {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5px;
+    vertical-align: top;
+    border-radius: 20px;
+    padding-top: 10px;
+    border: 1px solid #80bdff;
+    background-color: transparent;
+    font-size: 14px;
+    color: #fff;
+    width: 150px;
+    height: 40px;
+    margin-left: 80%;
+    margin-top: 30px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background .1s linear, color .1s linear;
+}
+
+.btn-logut ion-icon {
+    padding-top: 1px;
+}
+
+.btn-logut:hover {
+    border: 2px solid rgb(167, 167, 253);
+}
+
+.form-control {
+    display: block;
+    width: 440px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: white;
+    border: 1px solid #80bdff;
+    border-radius: 10px;
+    background-clip: padding-box;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+    color: white;
+    background-color: #fff;
+    border: 1px solid #80bdff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.form-control[type="file"] {
+    cursor: pointer;
+}
+
+.form-control[type="file"]::-webkit-file-upload-button {
+    font-family: monospace;
+    padding: 0.255rem 0.55rem;
+    margin-right: 0.75rem;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: 10px 0 0 10px;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.form-control[type="file"]::-webkit-file-upload-button:hover {
+    background-color: #d8d8d8;
+    border-color: #80bdff;
+}
+
+.form-group {
+    display: flex;
+    padding-top: 10px;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.form-group label {
+    font-family: monospace;
+    color: white;
+    font-size: 14px;
+    padding-left: 7px;
+    padding-bottom: 7px;
+}
+
+@media screen and (max-width: 768px) {
+    .profile-card {
+        height: 100%;
+        border-radius: 0;
+    }
+
+    .profile-header {
+        border-radius: 0;
+    }
+    
+    .profile-body {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .profile-actions {
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: 90px;
+    }
+}
